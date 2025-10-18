@@ -1,0 +1,89 @@
+x-ports:
+  CONTAINER_REST_PORT: 8090
+  CONTAINER_GRPC_PORT: 50051
+services:
+  weaviate:
+    image: semitechnologies/weaviate:1.24.10
+    container_name: weaviate
+    restart: unless-stopped
+    ports:
+      - ${WEAVIATE_HOST_PORT:-8090}:8080
+      - ${ALTERNATIVE_REST_PORT:-8081}:8081
+      - ${WEAVIATE_GRPC_HOST_PORT:-50051}:50051
+    environment:
+      QUERY_DEFAULTS_LIMIT: 25
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
+      PERSISTENCE_DATA_PATH: /var/lib/weaviate
+      DEFAULT_VECTORIZER_MODULE: none
+    volumes:
+      - weaviate_data:/var/lib/weaviate
+  embedding:
+    build:
+      context: ./embedding
+      args:
+        PRELOAD_MODEL: 'true'
+      dockerfile: Dockerfile.embedding
+    restart: unless-stopped
+    container_name: embedding
+    image: tipitaka-embedding
+    ports:
+      - ${EMBEDDING_HOST_PORT:-8000}:8000
+    environment:
+      MODEL_NAME: sentence-transformers/LaBSE
+      LABSE_DEVICE: cuda
+    depends_on:
+      weaviate:
+        condition: service_started
+    volumes:
+      - ./embedding:/app
+      - ./hf_cache:/root/.cache/huggingface
+    command: uvicorn embedding_service:app --host 0.0.0.0 --port 8001 --workers 1
+  search:
+    build:
+      context: ./search
+      dockerfile: Dockerfile.search
+    container_name: search
+    image: tipitaka-search
+    ports:
+      - 8002:8000
+    environment:
+      WEAVIATE_URL: http://weaviate:8080
+      WEAVIATE_GRPC_PORT: 50051
+      WEAVIATE_COLLECTION: Chunk
+      EMBEDDING_SERVICE_URL: http://embedding:8000/embed
+    depends_on:
+      - embedding
+      - weaviate
+    volumes:
+      - ./search:/app
+  etl:
+    build:
+      context: .
+      dockerfile: etl/Dockerfile.etl.dev
+    container_name: etl
+    image: tipitaka-etl
+    depends_on:
+      - embedding
+      - weaviate
+    working_dir: /workspace
+    environment:
+      WEAVIATE_URL: http://weaviate:8080
+      WEAVIATE_GRPC_PORT: '50051'
+      EMBEDDING_SERVICE_URL: http://embedding:8000/embed
+      DATA_DIR: /workspace/data
+      OUTPUTS_DIR: /workspace/data/outputs
+      DOWNLOAD_OUTPUTS: ${DOWNLOAD_OUTPUTS:-0}
+      GOOGLE_DRIVE_FOLDER_ID: ${GOOGLE_DRIVE_FOLDER_ID:-}
+      WAIT_MAX_SEC: ${WAIT_MAX_SEC:-900}
+      HF_HOME: /workspace/.cache/huggingface
+      TRANSFORMERS_CACHE: /workspace/.cache/huggingface
+      HF_HUB_ENABLE_HF_TRANSFER: '0'
+    volumes:
+      - ./data:/workspace/data
+      - ./etl/app:/workspace/etl/app
+      - ./weaviate-results:/workspace/weaviate-result
+      - hf_cache:/workspace/.cache/huggingface
+    command: python etl/app/pipeline.py
+volumes:
+  weaviate_data: {}
+  hf_cache: {}

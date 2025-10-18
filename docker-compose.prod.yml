@@ -1,0 +1,36 @@
+services:
+  weaviate:
+    image: semitechnologies/weaviate:1.24.10
+    restart: unless-stopped
+    ports:
+      - "${WEAVIATE_HOST_PORT:-8080}:8080"
+      - "${WEAVIATE_GRPC_HOST_PORT:-50051}:50051"
+    environment:
+      QUERY_DEFAULTS_LIMIT: "25"
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: "true"
+      PERSISTENCE_DATA_PATH: "/var/lib/weaviate"
+      DEFAULT_VECTORIZER_MODULE: "none"
+    volumes:
+      - weaviate_data:/var/lib/weaviate
+
+  etl:
+    build:
+      context: .
+      dockerfile: etl/Dockerfile.etl.prod
+    depends_on:
+      weaviate:
+        condition: service_started
+    working_dir: /workspace
+    environment:
+      WEAVIATE_URL: "http://weaviate:8080"
+      WEAVIATE_GRPC_PORT: "50051"
+      DATA_DIR: "/workspace/data"
+      OUTPUTS_DIR: "/workspace/data/outputs"
+      DOWNLOAD_OUTPUTS: "${DOWNLOAD_OUTPUTS:-0}"
+      GOOGLE_DRIVE_FOLDER_ID: "${GOOGLE_DRIVE_FOLDER_ID:-}"
+      WAIT_MAX_SEC: "${WAIT_MAX_SEC:-900}"
+    # ❌ No volumes → uses baked-in code/data
+    command: python etl/app/pipeline.py
+
+volumes:
+  weaviate_data: {}

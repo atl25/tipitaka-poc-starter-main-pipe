@@ -1,0 +1,20 @@
+
+services:
+  embedding:
+    volumes:
+      - ./embedding:/app
+    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+    environment:
+      PRELOAD_MODEL: "false"   # don’t bake model in dev, just download at runtime
+
+  search:
+    volumes:
+      - ./search:/app
+    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+
+  etl:
+    volumes:
+      - ./data:/workspace/data
+      - ./etl/app:/workspace/etl/app   # hot reload ETL code
+      - ./weaviate-results:/workspace/weaviate-result
+    command: ["python", "etl/app/pipeline.py"]

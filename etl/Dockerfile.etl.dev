@@ -1,0 +1,17 @@
+FROM python:3.11-slim
+WORKDIR /workspace
+
+# Install system deps temporarily
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends build-essential curl && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install Python deps
+COPY etl/requirements.txt ./requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy ETL code into image
+COPY etl/app ./etl/app
+
+# Default CMD
+CMD ["python", "etl/app/pipeline.py"]

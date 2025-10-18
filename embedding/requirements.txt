@@ -1,0 +1,5 @@
+# embedding/requirements.txt
+fastapi==0.116.2
+pydantic==2.11.9
+sentence_transformers==5.1.0
+uvicorn==0.36.0

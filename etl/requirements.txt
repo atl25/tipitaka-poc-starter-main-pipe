@@ -1,0 +1,11 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+sentence-transformers==2.7.0
+transformers==4.44.2
+hf-transfer
+
+numpy==2.3.3
+pandas==2.3.2
+Requests==2.32.5
+tqdm==4.67.1
+weaviate_client==4.16.9

@@ -1,0 +1,33 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install system deps
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential \
+    git curl && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements first (better caching)
+COPY requirements.txt .
+
+# Install Python deps (CPU-only PyTorch + pinned versions)
+RUN pip install --no-cache-dir -r requirements.txt \
+    --extra-index-url https://download.pytorch.org/whl/cpu
+
+# -------- ARG for dev/prod toggle --------
+ARG PRELOAD_MODEL=false
+ENV MODEL_NAME=sentence-transformers/LaBSE
+
+# Preload the model into image if PRELOAD_MODEL=true !!Downsides - Makes the image larger, Slows down build
+RUN if [ "$PRELOAD_MODEL" = "true" ]; then \
+    python -c "from sentence_transformers import SentenceTransformer as S; S('$MODEL_NAME')"; \
+    fi
+	
+# Copy service code
+COPY . /app
+
+# Run with Gunicorn + Uvicorn workers for scalability
+# ✅ Dynamically set Gunicorn worker count (2 × CPU cores by default)
+ENV WORKERS="2 * $(nproc)"
+
+# Use sh -c to evaluate arithmetic in ENV
+CMD ["sh", "-c", "gunicorn -w $((WORKERS)) -k uvicorn.workers.UvicornWorker --preload app:app --bind 0.0.0.0:8000"]

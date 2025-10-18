@@ -1,0 +1,298 @@
+Folder PATH listing for volume data
+Volume serial number is 28B1-2C26
+D:.
+³   bootstrap.sh
+³   docker-compose.override.yml
+³   docker-compose.prod.yml
+³   docker-compose.yml
+³   docker_reset.sh
+³   folder_structure.txt
+³   get_latest.sh
+³   README.md
+³   
+ÃÄÄÄdata
+³   ³   download_folder.py
+³   ³   README.md
+³   ³   
+³   ÃÄÄÄoutputs
+³   ³   ³   sentences_ids.txt
+³   ³   ³   sentences_labse.npy
+³   ³   ³   sentences_labse_en.npy
+³   ³   ³   sentences_labse_en_ids.txt
+³   ³   ³   sentences_labse_pali.npy
+³   ³   ³   sentences_labse_pali_ids.txt
+³   ³   ³   sentences_with_headings.csv
+³   ³   ³   
+³   ³   ÀÄÄÄold
+³   ³           chunks.csv
+³   ³           chunks_ids.txt
+³   ³           chunks_labse.npy
+³   ³           sentences_from_200.csv
+³   ³           sentences_ids.txt
+³   ³           sentences_labse.npy
+³   ³           sentences_with_headings.csv
+³   ³           subchunks_200.csv
+³   ³           subchunks_ids.txt
+³   ³           subchunks_labse.npy
+³   ³           windows_2_3.csv
+³   ³           windows_ids.txt
+³   ³           windows_labse.npy
+³   ³           windows_with_headings.csv
+³   ³           
+³   ÀÄÄÄraw
+³           mn5chunk.txt
+³           
+ÃÄÄÄdoc
+³       20250920 Scalability and Throughput.pdf
+³       
+ÃÄÄÄembedding
+³   ³   app.py
+³   ³   Dockerfile.embedding
+³   ³   README.md
+³   ³   requirements.txt
+³   ³   
+³   ÀÄÄÄ__pycache__
+³           app.cpython-311.pyc
+³           
+ÃÄÄÄetl
+³   ³   Dockerfile.etl
+³   ³   Dockerfile.etl.dev
+³   ³   Dockerfile.etl.prod
+³   ³   requirements.txt
+³   ³   
+³   ÀÄÄÄapp
+³           chunk-split.py
+³           clean_text_only.py
+³           insert_vectors_generic.py
+³           insert_with_vectors.py
+³           join_headings_by_tokens.py
+³           make_labse_embeddings.py
+³           md_headings_to_sentences_v2.py
+³           pipeline.py
+³           README.md
+³           search_weaviate_labse_hybridfix.py
+³           weaviate_multitier_setup_and_search.py
+³           weaviate_multitier_setup_and_search_patched.py
+³           
+ÃÄÄÄhf_cache
+³   ÃÄÄÄhub
+³   ³   ÃÄÄÄ.locks
+³   ³   ³   ÀÄÄÄmodels--sentence-transformers--LaBSE
+³   ³   ³           295793cf5b9bd9b768f85febc637a12f02f3b72c.lock
+³   ³   ³           298eca026c5ea9979542dd8bd200ab1b439c4795.lock
+³   ³   ³           59d594003bf59880a884c574bf88ef7555bb0202.lock
+³   ³   ³           678c8bb71e6e7258ef1338d8439a42c4f0a54ac4.lock
+³   ³   ³           77d8e1f2dbab6eb5d3c261ce9d3dbf1e3c69e02938c95f934f94f42c22dfa31f.lock
+³   ³   ³           a5945d6ea40c7c2491f5108cf24bf51375fce0c9.lock
+³   ³   ³           b0085edb93d8c1b1f4e4e04b60eb6cb6f292443b.lock
+³   ³   ³           b57dd663f5054671fd9c98f9247331f97596d12d.lock
+³   ³   ³           b974b349cb2d419ada11181750a733ff82f291ad.lock
+³   ³   ³           da5bfd57e34ca45582e4bdbaa3e6deb9efffa08d.lock
+³   ³   ³           da9dfd6c9a5b9b2c866c0374059f6168414ecc2f.lock
+³   ³   ³           e7b0375001f109a6b8873d756ad4f7bbb15fbaa5.lock
+³   ³   ³           f866c945fa2147ce4940c8ead0b4b20af4217e0f4664bd35f41c2a0967c4fe77.lock
+³   ³   ³           
+³   ³   ÀÄÄÄmodels--sentence-transformers--LaBSE
+³   ³       ÃÄÄÄ.no_exist
+³   ³       ³   ÀÄÄÄ836121a0533e5664b21c7aacc5d22951f2b8b25b
+³   ³       ³           adapter_config.json
+³   ³       ³           added_tokens.json
+³   ³       ³           chat_template.jinja
+³   ³       ³           
+³   ³       ÃÄÄÄblobs
+³   ³       ³       295793cf5b9bd9b768f85febc637a12f02f3b72c
+³   ³       ³       298eca026c5ea9979542dd8bd200ab1b439c4795
+³   ³       ³       59d594003bf59880a884c574bf88ef7555bb0202
+³   ³       ³       678c8bb71e6e7258ef1338d8439a42c4f0a54ac4
+³   ³       ³       77d8e1f2dbab6eb5d3c261ce9d3dbf1e3c69e02938c95f934f94f42c22dfa31f
+³   ³       ³       a5945d6ea40c7c2491f5108cf24bf51375fce0c9
+³   ³       ³       b0085edb93d8c1b1f4e4e04b60eb6cb6f292443b
+³   ³       ³       b57dd663f5054671fd9c98f9247331f97596d12d
+³   ³       ³       b974b349cb2d419ada11181750a733ff82f291ad
+³   ³       ³       da5bfd57e34ca45582e4bdbaa3e6deb9efffa08d
+³   ³       ³       da9dfd6c9a5b9b2c866c0374059f6168414ecc2f
+³   ³       ³       e7b0375001f109a6b8873d756ad4f7bbb15fbaa5
+³   ³       ³       f866c945fa2147ce4940c8ead0b4b20af4217e0f4664bd35f41c2a0967c4fe77
+³   ³       ³       
+³   ³       ÃÄÄÄrefs 
+³   ³       ³       main
+³   ³       ³       
+³   ³       ÀÄÄÄsnapshots
+³   ³           ÀÄÄÄ836121a0533e5664b21c7aacc5d22951f2b8b25b
+³   ³               ³   config.json
+³   ³               ³   config_sentence_transformers.json
+³   ³               ³   model.safetensors
+³   ³               ³   modules.json
+³   ³               ³   README.md
+³   ³               ³   sentence_bert_config.json
+³   ³               ³   special_tokens_map.json
+³   ³               ³   tokenizer.json
+³   ³               ³   tokenizer_config.json
+³   ³               ³   vocab.txt
+³   ³               ³   
+³   ³               ÃÄÄÄ1_Pooling
+³   ³               ³       config.json
+³   ³               ³       
+³   ³               ÀÄÄÄ2_Dense
+³   ³                       config.json
+³   ³                       model.safetensors
+³   ³                       
+³   ÀÄÄÄxet
+³       ÀÄÄÄhttps___cas_serv-tGqkUaZf_CBPHQ6h
+³           ÃÄÄÄchunk-cache
+³           ³   ÃÄÄÄ-8
+³           ³   ³   ÀÄÄÄ-8W0h8YSwydUzY0BOoYYEd2kXy9r1xGlMBJHuNM48mJkZWZhdWx0
+³           ³   ³           AAAAAGQEAAAuQf8DAAAAANnxI8A=
+³           ³   ³           
+³           ³   ÃÄÄÄ-f
+³           ³   ³   ÀÄÄÄ-fpRHB4sEmHK8D7FdQiVXEN-X7qzduUfwuDbjt_nVAxkZWZhdWx0
+³           ³   ³           AAAAACQEAAD6tP8DAAAAAD1JZwc=
+³           ³   ³           
+³           ³   ÃÄÄÄ3b
+³           ³   ³   ÀÄÄÄ3b37rKRH79Ub0hbp0KW4XW43w9CwGI4_bRXJDVMA2nNkZWZhdWx0
+³           ³   ³           AAAAAGwEAAA73f4DAAAAAKVZtHA=
+³           ³   ³           
+³           ³   ÃÄÄÄ3S
+³           ³   ³   ÀÄÄÄ3S0f8u_KPy-TtsGv58mkcZImR2EX5z4HQ_48RGJ2lSpkZWZhdWx0
+³           ³   ³           AAAAACcEAACTxf8DAAAAAJYUpVQ=
+³           ³   ³           
+³           ³   ÃÄÄÄ6L
+³           ³   ³   ÀÄÄÄ6LkGuiopwO0POXejHhGfNW4MjbOc8HdwWkLYFyaUTjxkZWZhdWx0
+³           ³   ³           AAAAAEMEAABHAQAEAAAAAPHGc_o=
+³           ³   ³           
+³           ³   ÃÄÄÄ7F
+³           ³   ³   ÀÄÄÄ7FPY8epY0OIUXgd2Y6sxluO5Vc_Fl2iw6rzxGpucPKxkZWZhdWx0
+³           ³   ³           AAAAADoEAACk7v4DAAAAAP6QycU=
+³           ³   ³           
+³           ³   ÃÄÄÄ8O
+³           ³   ³   ÀÄÄÄ8OmV0xNuG2ODx_s5L6RSKrRtn8amiN6MsRWGqcIAr_pkZWZhdWx0
+³           ³   ³           AAAAAFYEAACj5f8DAAAAALBf-b0=
+³           ³   ³           
+³           ³   ÃÄÄÄ93
+³           ³   ³   ÀÄÄÄ9354fzjdXKmlyhBJ-wPuS1LuhG_pIkC1FzvEV_ChNmNkZWZhdWx0
+³           ³   ³           AAAAAD8EAAD8qv8DAAAAAL7Q8Wg=
+³           ³   ³           
+³           ³   ÃÄÄÄbU
+³           ³   ³   ÀÄÄÄbUbOIi7P4YdFhlBzf4fsISaAmA1VeDQXSExQPPSRTvdkZWZhdWx0
+³           ³   ³           AAAAAEEEAABVxv8DAAAAACYWbm4=
+³           ³   ³           
+³           ³   ÃÄÄÄde
+³           ³   ³   ÀÄÄÄdeOCQOQCUkSgJItTNq6btsFhlSiYNyDYhIKbJ82BG7lkZWZhdWx0
+³           ³   ³           AAAAAD0EAACwOP4DAAAAAB9kQzI=
+³           ³   ³           
+³           ³   ÃÄÄÄDL
+³           ³   ³   ÀÄÄÄDLQ95OYSyxK2PD9LPHAZZ4Ky1o_CGk8tK3SEhdBB4ypkZWZhdWx0
+³           ³   ³           AAAAAHMEAAC37_8DAAAAAPvry54=
+³           ³   ³           
+³           ³   ÃÄÄÄH3
+³           ³   ³   ÀÄÄÄH3yuKWthU6jtzIIGP3jeZSRzTkkOtinINLYHT5zBOJdkZWZhdWx0
+³           ³   ³           AAAAAFQEAABrEf8DAAAAAKB408M=
+³           ³   ³           
+³           ³   ÃÄÄÄiZ
+³           ³   ³   ÀÄÄÄiZF9y1MuauYuFabX64xq1df-3mLg6A6kUMLDkw5WcWZkZWZhdWx0
+³           ³   ³           AAAAAHYEAADegv8DAAAAAGPKZ1I=
+³           ³   ³           
+³           ³   ÃÄÄÄJT
+³           ³   ³   ÀÄÄÄJTNyAwKPIOdzVHihLwAHto_Rz2wIVzzJy2g4mUBZxU5kZWZhdWx0
+³           ³   ³           AAAAAAgAAACbtwsAAAAAAN5y5bQ=
+³           ³   ³           BwAAAEYEAACHLvYDAAAAAHQJsx4=
+³           ³   ³           
+³           ³   ÃÄÄÄn3
+³           ³   ³   ÀÄÄÄn3hL8BIW9Rn29sdKJchbD26WSyH-hDDq5WdjM4G9VGNkZWZhdWx0
+³           ³   ³           AAAAAD4EAADx4v8DAAAAAKF5fBs=
+³           ³   ³           
+³           ³   ÃÄÄÄoz
+³           ³   ³   ÀÄÄÄozh8II11Kxh0mYTejggHCh6vQBpWel9fJQYM5CYKSllkZWZhdWx0
+³           ³   ³           AAAAADwEAACMXP8DAAAAAE1UXi4=
+³           ³   ³           
+³           ³   ÃÄÄÄpe
+³           ³   ³   ÀÄÄÄpe7texXh0nY_CUlzg6PE3TYC8lhZ3BMZCRE7E0VnjWZkZWZhdWx0
+³           ³   ³           AAAAAEAEAADyeP8DAAAAACDeoAk=
+³           ³   ³           
+³           ³   ÃÄÄÄPn
+³           ³   ³   ÀÄÄÄPnQT9GPajxYwFa0-T8Rir8EkE7NBQpReAe33eIql809kZWZhdWx0
+³           ³   ³           AAAAAKkBAABk_n0BAAAAAGuBc-M=
+³           ³   ³           
+³           ³   ÃÄÄÄQc
+³           ³   ³   ÀÄÄÄQcfdr0P9j6wsiJoAaaSaF3Hd8doEFL8g20-U2_up4FtkZWZhdWx0
+³           ³   ³           AAAAAFAEAAAo6_4DAAAAAMeRrb4=
+³           ³   ³           
+³           ³   ÃÄÄÄQE
+³           ³   ³   ÀÄÄÄQEjrRxJXcT4h-lqYqDqINr8H-yWlE_VRBrVej-9kUGVkZWZhdWx0
+³           ³   ³           BQEAACwEAADoTtwCAAAAAPS9cJY=
+³           ³   ³           
+³           ³   ÃÄÄÄQf
+³           ³   ³   ÀÄÄÄQfM8z3vc654LFXBYFT6NlZb9kAUYD-WWOvu89GiL0l5kZWZhdWx0
+³           ³   ³           AAAAABgEAACWQ_4DAAAAAEEzvdM=
+³           ³   ³           
+³           ³   ÃÄÄÄqU
+³           ³   ³   ÀÄÄÄqUVL6MQp2fXDLAAbz0lOFWq6jh0U_COtzKtgx6NaMglkZWZhdWx0
+³           ³   ³           AAAAAGIEAACh7f8DAAAAACAkrxY=
+³           ³   ³           
+³           ³   ÃÄÄÄRD
+³           ³   ³   ÀÄÄÄRDq5NqB8lljGugTeyPp9ZHRCvU6txrNzaXZdIN6RLWRkZWZhdWx0
+³           ³   ³           AAAAAGkEAADQGf8DAAAAAJQXxeM=
+³           ³   ³           
+³           ³   ÃÄÄÄrT
+³           ³   ³   ÀÄÄÄrTzsoVus13nVUat76Ua8DAgYize1B8odzcCCQ7IQpkJkZWZhdWx0
+³           ³   ³           AAAAACUAAAA8DSQAAAAAAKZj-ZE=
+³           ³   ³           
+³           ³   ÃÄÄÄT3
+³           ³   ³   ÀÄÄÄT3Cdxckyf-KeebFH158HeBPrOAvEnlTthofGSigK5slkZWZhdWx0
+³           ³   ³           AAAAAG8EAAAf-_8DAAAAAAl92cw=
+³           ³   ³           
+³           ³   ÃÄÄÄV9
+³           ³   ³   ÀÄÄÄV9RJFP8syx84EefB3iwKeYAiygipQqgxCTGzxiWeCsdkZWZhdWx0
+³           ³   ³           AAAAAFsEAABDC_8DAAAAANkFg_w=
+³           ³   ³           
+³           ³   ÃÄÄÄWY
+³           ³   ³   ÀÄÄÄWYVOZHl7jDMpXWfM824EdBhrry0Dr3CNDhfMZHzxHs5kZWZhdWx0
+³           ³   ³           AAAAAH8EAAB6l_4DAAAAAMKE71Y=
+³           ³   ³           
+³           ³   ÃÄÄÄYu
+³           ³   ³   ÀÄÄÄYuOaYHHjvhASVhu9GFl-2BZ4ZvM0F6YidQVlYwt7zHRkZWZhdWx0
+³           ³   ³           AAAAAG8EAADq6_8DAAAAANpFnE4=
+³           ³   ³           
+³           ³   ÃÄÄÄzP
+³           ³   ³   ÀÄÄÄzPcKnGLi1kh2cKcOEX5V7hFmcDU5lMfwDQY-yr3E6xNkZWZhdWx0
+³           ³   ³           AAAAADkEAACKOf8DAAAAAKNeKj4=
+³           ³   ³           
+³           ³   ÀÄÄÄzw
+³           ³       ÀÄÄÄzwcyQCW5c-VVvRKA7hHXTDOXz7bA_wDf0YND6BC68aBkZWZhdWx0
+³           ³               AAAAAHcEAACn5f4DAAAAAMF-JEY=
+³           ³               
+³           ÀÄÄÄstaging
+ÃÄÄÄnote
+³       note.txt
+³       ????????????? ?????????? ?????.txt
+³       ?????????????? ???????? ???????????? (pipeline).txt
+³       
+ÃÄÄÄpali-en-translation
+³       palienglish_open_ai_translation_mini_pipeline_ó_8_k_tokens_per_call.md
+³       
+ÃÄÄÄsearch
+³   ³   app.py
+³   ³   cli.py
+³   ³   Dockerfile.search
+³   ³   make_labse_embeddings (En).py
+³   ³   README.md
+³   ³   requirements.txt
+³   ³   search_weaviate_labse_hybridfix.py
+³   ³   utils.py
+³   ³   
+³   ÀÄÄÄ__pycache__
+³           app.cpython-311.pyc
+³           utils.cpython-311.pyc
+³           
+ÃÄÄÄweaviate-results
+ÀÄÄÄweaviate_data
+    ³   classifications.db
+    ³   migration1.19.filter2search.skip.flag
+    ³   migration1.19.filter2search.state
+    ³   migration1.22.fs.hierarchy
+    ³   modules.db
+    ³   schema.db
+    ³   
+    ÀÄÄÄraft
+            raft.db
+            

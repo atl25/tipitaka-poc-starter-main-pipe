@@ -1,0 +1,20 @@
+FROM python:3.11-slim
+WORKDIR /workspace
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements & install
+COPY etl/requirements.txt ./requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy all code and data into image
+COPY etl/ /workspace/etl
+COPY data/ /workspace/data
+
+# Default CMD for prod
+CMD ["python", "etl/app/pipeline.py"]
+
